@@ -54,6 +54,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs('static/images', exist_ok=True)
 
 
+
 def get_db_connection():
     return mysql.connector.connect(
         host=os.getenv("DB_HOST"),
@@ -61,8 +62,8 @@ def get_db_connection():
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
         database=os.getenv("DB_NAME"),
-        ssl_ca=os.getenv("DB_SSL_CA") or None,
-        ssl_verify_cert=bool(os.getenv("DB_SSL_CA"))
+        ssl_ca=os.getenv("DB_SSL_CA", "certs/ca.pem"),
+        ssl_verify_cert=True
     )
     
 def check_connection(conn, redirect_url='/'):
