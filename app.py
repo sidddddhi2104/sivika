@@ -338,7 +338,7 @@ def login():
 
             flash('Login Successful')
 
-            return redirect('/')
+            return redirect('/index')
 
         else:
 
